@@ -226,7 +226,7 @@ void FBasicStartupScreen::NetInit(const char *message, int numplayers)
 			DestroyWindow (ProgressBar);
 			ProgressBar = NULL;
 		}
-		RECT winrect;
+		RECT winrect = {};
 		GetWindowRect (Window, &winrect);
 		SetWindowPos (Window, NULL, 0, 0,
 			winrect.right - winrect.left, winrect.bottom - winrect.top + LayoutNetStartPane (NetStartPane, 0),
@@ -646,7 +646,7 @@ void ST_Util_SizeWindowForBitmap (int scale)
 {
 	DEVMODE displaysettings;
 	int w, h, cx, cy, x, y;
-	RECT rect;
+	RECT rect = {};
 
 	if (GameTitleWindow != NULL)
 	{
@@ -702,7 +702,7 @@ void ST_Util_SizeWindowForBitmap (int scale)
 
 void ST_Util_InvalidateRect (HWND hwnd, BitmapInfo *bitmap_info, int left, int top, int right, int bottom)
 {
-	RECT rect;
+	RECT rect = {};
 
 	GetClientRect (hwnd, &rect);
 	rect.left = left * rect.right / bitmap_info->bmiHeader.biWidth - 1;
