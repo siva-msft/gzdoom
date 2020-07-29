@@ -78,7 +78,7 @@ EXTERN_CVAR(Int, vid_defheight)
  void SystemBaseFrameBuffer::GetCenteredPos(int in_w, int in_h, int &winx, int &winy, int &winw, int &winh, int &scrwidth, int &scrheight)
 {
 	DEVMODE displaysettings;
-	RECT rect;
+	RECT rect = {};
 	int cx, cy;
 
 	memset(&displaysettings, 0, sizeof(displaysettings));
