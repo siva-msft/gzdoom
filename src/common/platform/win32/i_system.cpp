@@ -286,7 +286,7 @@ static void DoPrintStr(const char *cpt, HWND edit, HANDLE StdOut)
 
 	wchar_t wbuf[256];
 	int bpos = 0;
-	CHARRANGE selection;
+	CHARRANGE selection = {};
 	CHARRANGE endselection;
 	LONG lines_before = 0, lines_after;
 	CHARFORMAT format;
@@ -322,7 +322,7 @@ static void DoPrintStr(const char *cpt, HWND edit, HANDLE StdOut)
 		if (StdOut != nullptr)
 		{
 			// Convert back to UTF-8.
-			DWORD bytes_written;
+			DWORD bytes_written = 0;
 			if (!FancyStdOut)
 			{
 				FString conout(wbuf);
