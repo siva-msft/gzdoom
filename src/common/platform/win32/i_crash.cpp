@@ -1013,7 +1013,7 @@ static void StackWalk (HANDLE file, void *dumpaddress, DWORD *topOfStack, DWORD 
 
 			// Check if address is after a call statement. Print what was called if it is.
 			const uint8_t *bytep = (uint8_t *)code;
-			uint8_t peekb;
+			uint8_t peekb = 0;
 
 #define chkbyte(x,m,v) (SafeReadMemory(x, &peekb, 1) && ((peekb & m) == v))
 
@@ -1109,7 +1109,7 @@ static void StackWalk (HANDLE file, void *dumpaddress, DWORD *topOfStack, DWORD 
 
 					if (mod == 1)
 					{
-						signed char miniofs;
+						signed char miniofs = 0;
 						SafeReadMemory (bytep++, &miniofs, 1);
 						offset = miniofs;
 					}
@@ -1881,7 +1881,7 @@ static INT_PTR CALLBACK CrashDlgProc (HWND hDlg, UINT message, WPARAM wParam, LP
 	static WCHAR details[] = L"Details";
 	HWND edit;
 	TCITEM tcitem;
-	RECT tabrect, tcrect;
+	RECT tabrect, tcrect = {};
 	LPNMHDR nmhdr;
 
 	switch (message)
